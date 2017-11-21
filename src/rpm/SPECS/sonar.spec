@@ -34,7 +34,7 @@ rm -rf $RPM_BUILD_ROOT
 # ------------------------------------------------------------------------------
 %install
 %{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} $RPM_BUILD_ROOT/%{sonar_home}/logs
-%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home}/web
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home}/data
 
 cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 # ------------------------------------------------------------------------------

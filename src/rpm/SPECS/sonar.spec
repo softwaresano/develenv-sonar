@@ -1,4 +1,3 @@
-# rpmbuild -bb SPECS/jenkins.spec --define '_topdir '`pwd` -v --clean
 %define sonar_version 6.7
 Name:       sonar
 Version:    %{versionModule}
@@ -11,7 +10,9 @@ Packager:   softwaresano.com
 URL:        http://jenkins-ci.org/
 BuildArch:  x86_64
 BuildRoot:  %{_topdir}/BUILDROOT
-Requires:   ss-develenv-user >= 33 httpd jdk mod_proxy_html
+Requires:   ss-develenv-user >= 33 httpd jdk mysql_server
+AutoReqProv: no
+
 Vendor:     softwaresano
 
 %define package_name sonar

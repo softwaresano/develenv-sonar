@@ -1,0 +1,15 @@
+[Unit]
+Requires=network-online.target
+After=network-online.target httpd.service
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/sysconfig/develenv-devpi
+PIDFile=/var/develenv/repositories/devpi/.xproc/devpi-server/xprocess.PID
+Restart=always
+ExecStart=/opt/ss/develenv/platform/sonar/bin/linux-x86-64/sonar.sh start
+ExecStop=/opt/ss/develenv/platform/sonar/bin/linux-x86-64/sonar.sh stop
+User=develenv
+
+[Install]
+WantedBy=multi-user.target

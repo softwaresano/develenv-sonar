@@ -10,7 +10,7 @@ Packager:   softwaresano.com
 URL:        http://jenkins-ci.org/
 BuildArch:  x86_64
 BuildRoot:  %{_topdir}/BUILDROOT
-Requires:   ss-develenv-user >= 33 httpd jdk mysql_server
+Requires:   ss-develenv-user >= 33 httpd jdk mysql-server
 AutoReqProv: no
 
 Vendor:     softwaresano

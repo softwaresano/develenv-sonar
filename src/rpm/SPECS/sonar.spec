@@ -9,7 +9,7 @@ Group:      develenv
 License:    http://creativecommons.org/licenses/by/3.0/
 Packager:   softwaresano.com
 URL:        http://jenkins-ci.org/
-BuildArch:  noarch
+BuildArch:  x86_64
 BuildRoot:  %{_topdir}/BUILDROOT
 Requires:   ss-develenv-user >= 33 httpd jdk mod_proxy_html
 Vendor:     softwaresano

@@ -44,12 +44,19 @@ cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 # POST-INSTALL
 # ------------------------------------------------------------------------------
 %post
-
+systemctl daemon-reload
+systemctl try-restart httpd
 
 # ------------------------------------------------------------------------------
 # PRE-UNINSTALL
 # ------------------------------------------------------------------------------
 %preun
+if [ "$1" = 0 ] ; then
+    # if this is uninstallation as opposed to upgrade, delete the service
+    systemctl stop develenv-sonar > /dev/null 2>&1
+    systemctl disable develenv-sonar > /dev/null 2>&1
+    exit 0
+fi
 # ------------------------------------------------------------------------------
 # POST-UNINSTALL
 # ------------------------------------------------------------------------------
@@ -60,7 +67,13 @@ cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 %dir %{sonar_home}/data
 %dir %{sonar_home}/temp
 %defattr(-,root,root,-)
-%{sonar_home}
+%{sonar_home}/bin/*
+%{sonar_home}/conf/*
+%{sonar_home}/elasticsearch/*
+%{sonar_home}/extensions/*
+%{sonar_home}/lib/*
+%{sonar_home}/web/*
+%{sonar_home}/COPYING
 %{target_dir}/etc/httpd/conf.d/*
 /etc/systemd/system/*
 %doc ../../../../README.md

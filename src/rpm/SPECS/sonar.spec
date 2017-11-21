@@ -57,7 +57,7 @@ cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 %files
 %defattr(-,develenv,develenv,-)
 %dir %{sonar_home}/logs
-%dir %{sonar_home}/web
+%dir %{sonar_home}/data
 %dir %{sonar_home}/temp
 %defattr(-,root,root,-)
 %{sonar_home}

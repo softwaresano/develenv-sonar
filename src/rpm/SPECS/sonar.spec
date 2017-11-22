@@ -71,7 +71,7 @@ fi
 %dir %{sonar_home}/temp
 %defattr(-,root,root,-)
 %{sonar_home}/bin/*
-%{sonar_home}/conf/*
+%config(noreplace) %{sonar_home}/conf/*
 %{sonar_home}/elasticsearch/*
 %{sonar_home}/extensions/*
 %{sonar_home}/lib/*

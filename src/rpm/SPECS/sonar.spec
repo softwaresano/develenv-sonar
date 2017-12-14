@@ -33,7 +33,7 @@ rm -rf $RPM_BUILD_ROOT
 # INSTALL
 # ------------------------------------------------------------------------------
 %install
-%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} 
+%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} $RPM_BUILD_ROOT/%{sonar_home}
 
 cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 rm -rf $RPM_BUILD_ROOT/%{target_dir}/extras

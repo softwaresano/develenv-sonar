@@ -35,7 +35,19 @@ rm -rf $RPM_BUILD_ROOT
 %install
 %{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} $RPM_BUILD_ROOT/%{sonar_home}/logs
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home}/data
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/extensions/downloads
+
 cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
+rm -rf $RPM_BUILD_ROOT/%{target_dir}/extras
+cd $RPM_BUILD_ROOT/%{target_dir}
+mkdir build
+cd build
+curl -L -k https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
+unzip sonarqube-%{sonar_version}.zip
+cd sonarqube-%{sonar_version}
+cd ../../
+mv build/sonarqube-%{sonar_version}/* $RPM_BUILD_ROOT/%{sonar_home}/
+rm -rf build 
 sed -i s:^PIDDIR.*:PIDDIR=/tmp:g $RPM_BUILD_ROOT/%{sonar_home}/bin/linux-x86-64/sonar.sh
 
 # ------------------------------------------------------------------------------
@@ -69,11 +81,12 @@ fi
 %dir %{sonar_home}/logs
 %dir %{sonar_home}/data
 %dir %{sonar_home}/temp
+%{sonar_home}/extensions/*
+%dir %{sonar_home}/extensions/downloads
 %defattr(-,root,root,-)
 %{sonar_home}/bin/*
 %config(noreplace) %{sonar_home}/conf/*
 %{sonar_home}/elasticsearch/*
-%{sonar_home}/extensions/*
 %{sonar_home}/lib/*
 %{sonar_home}/web/*
 %{sonar_home}/COPYING

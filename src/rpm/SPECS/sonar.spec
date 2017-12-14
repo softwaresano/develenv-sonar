@@ -33,9 +33,7 @@ rm -rf $RPM_BUILD_ROOT
 # INSTALL
 # ------------------------------------------------------------------------------
 %install
-%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} $RPM_BUILD_ROOT/%{sonar_home}/logs
-%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home}/data
-%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/extensions/downloads
+%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} 
 
 cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 rm -rf $RPM_BUILD_ROOT/%{target_dir}/extras
@@ -49,7 +47,9 @@ cd ../../
 mv build/sonarqube-%{sonar_version}/* $RPM_BUILD_ROOT/%{sonar_home}/
 rm -rf build 
 sed -i s:^PIDDIR.*:PIDDIR=/tmp:g $RPM_BUILD_ROOT/%{sonar_home}/bin/linux-x86-64/sonar.sh
-
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/logs
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home}/data
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/extensions/downloads
 # ------------------------------------------------------------------------------
 # PRE-INSTALL
 # ------------------------------------------------------------------------------

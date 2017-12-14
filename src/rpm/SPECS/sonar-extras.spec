@@ -33,7 +33,7 @@ rm -rf $RPM_BUILD_ROOT
 # INSTALL
 # ------------------------------------------------------------------------------
 %install
-%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir}
+%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir}/
 cp -R %{_sourcedir}/extras/* $RPM_BUILD_ROOT/%{target_dir}
 
 # ------------------------------------------------------------------------------

@@ -42,7 +42,7 @@ rm -rf $RPM_BUILD_ROOT/%{target_dir}/extras
 cd $RPM_BUILD_ROOT/%{target_dir}
 mkdir build
 cd build
-curl -L -k https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
+curl -L -k -O https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
 unzip sonarqube-%{sonar_version}.zip
 cd sonarqube-%{sonar_version}
 cd ../../

@@ -1,7 +1,7 @@
 %define sonar_version 6.7.1
 Name:       sonar
 Version:    %{versionModule}
-Release:    %{sonar_version}.%{releaseModule}
+Release:    %{sonar_version}.r%{releaseModule}
 Epoch:      2
 Summary:    An extendable open source continuous inspection
 Group:      develenv

@@ -1,4 +1,4 @@
-%define sonar_version 6.7.1
+%define sonar_version 7.3
 Name:       sonar
 Version:    %{versionModule}
 Release:    %{sonar_version}.r%{releaseModule}

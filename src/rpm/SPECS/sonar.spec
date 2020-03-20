@@ -49,11 +49,19 @@ rm -rf build
 sed -i s:^PIDDIR.*:PIDDIR=/tmp:g $RPM_BUILD_ROOT/%{sonar_home}/bin/linux-x86-64/sonar.sh
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/logs
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home}/data
+%{__mkdir_p} $RPM_BUILD_ROOT/var/lib/sonar/temp $RPM_BUILD_ROOT/var/lib/data
+
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/extensions/downloads
 # ------------------------------------------------------------------------------
 # PRE-INSTALL
 # ------------------------------------------------------------------------------
 %pre
+groupadd -r -f sonar
+grep -q sonar /etc/passwd
+if [ $? -ne 0 ]; then
+  useradd -d /var/lib/sonar -g sonar -M -r sonar -s /sbin/nologin
+fi
+
 # ------------------------------------------------------------------------------
 # POST-INSTALL
 # ------------------------------------------------------------------------------
@@ -77,7 +85,7 @@ fi
 # ------------------------------------------------------------------------------
 %postun
 %files
-%defattr(-,develenv,develenv,-)
+%defattr(-,sonar,sonar,-)
 %dir %{sonar_home}/logs
 %dir %{sonar_home}/data
 %dir %{sonar_home}/temp

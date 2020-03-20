@@ -1,19 +1,19 @@
-%define sonar_version 7.3
-Name:       sonar
-Version:    %{versionModule}
-Release:    %{sonar_version}.r%{releaseModule}
-Epoch:      2
-Summary:    An extendable open source continuous inspection
-Group:      develenv
-License:    http://creativecommons.org/licenses/by/3.0/
-Packager:   softwaresano.com
-URL:        https://www.sonarqube.org/
-BuildArch:  x86_64
-BuildRoot:  %{_topdir}/BUILDROOT
-Requires:   ss-develenv-user >= 33 httpd jdk mysql-server
+%define sonar_version 8.2.0.32929
+Name:        sonar
+Version:     %{versionModule}
+Release:     %{sonar_version}.r%{releaseModule}
+Epoch:       2
+Summary:     An extendable open source continuous inspection
+Group:       develenv
+License:     http://creativecommons.org/licenses/by/3.0/
+Packager:    softwaresano.com
+URL:         https://www.sonarqube.org/
+BuildArch:   x86_64
+BuildRoot:   %{_topdir}/BUILDROOT
+Requires:    httpd java-11-openjdk postgresql-server >= 10.6
 AutoReqProv: no
 
-Vendor:     softwaresano
+Vendor:      softwaresano
 
 %define package_name sonar
 %define target_dir /
@@ -40,7 +40,7 @@ rm -rf $RPM_BUILD_ROOT/%{target_dir}/extras
 cd $RPM_BUILD_ROOT/%{target_dir}
 mkdir build
 cd build
-curl -L -k -O https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
+curl -L -k -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
 unzip sonarqube-%{sonar_version}.zip
 cd sonarqube-%{sonar_version}
 cd ../../

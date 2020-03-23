@@ -10,7 +10,7 @@ Packager:    softwaresano.com
 URL:         https://www.sonarqube.org/
 BuildArch:   x86_64
 BuildRoot:   %{_topdir}/BUILDROOT
-Requires:    httpd java-11-openjdk postgresql-server >= 10.6
+Requires:    mod_proxy_html httpd java-11-openjdk postgresql-server >= 10.6
 AutoReqProv: no
 
 Vendor:      softwaresano

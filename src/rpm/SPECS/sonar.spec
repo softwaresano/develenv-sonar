@@ -18,6 +18,8 @@ Vendor:      softwaresano
 %define package_name sonar
 %define target_dir /
 %define sonar_home /opt/ss/develenv/platform/sonar
+%define sonar_home_logs /var/log/sonar
+%define sonar_home_data /var/lib/sonar
 
 %description
 Sonar is the central place to manage code quality, offering visual reporting on
@@ -43,13 +45,34 @@ cd build
 curl -L -k -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
 unzip sonarqube-%{sonar_version}.zip
 cd sonarqube-%{sonar_version}
+rm -rf bin/windows-x86-64
 cd ../../
 mv build/sonarqube-%{sonar_version}/* $RPM_BUILD_ROOT/%{sonar_home}/
 rm -rf build 
 sed -i s:^PIDDIR.*:PIDDIR=/tmp:g $RPM_BUILD_ROOT/%{sonar_home}/bin/linux-x86-64/sonar.sh
-%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/logs
-%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home}/data
-%{__mkdir_p} $RPM_BUILD_ROOT/var/lib/sonar/temp $RPM_BUILD_ROOT/var/lib/data
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_logs}
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_data}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/data
+mv ${RPM_BUILD_ROOT}/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/
+mv ${RPM_BUILD_ROOT}/%{sonar_home}/data $RPM_BUILD_ROOT/%{sonar_home_data}/
+ln -sf %{sonar_home_data}/temp $RPM_BUILD_ROOT/%{sonar_home}
+ln -sf %{sonar_home_data}/data $RPM_BUILD_ROOT/%{sonar_home}
+
+cat <<EOF >>  $RPM_BUILD_ROOT/%{sonar_home}/conf/sonar.properties
+# Default configuration for sonar with develenv
+sonar.path.logs=%{sonar_home_logs}
+sonar.jdbc.username=sonar
+sonar.jdbc.password=sonar
+sonar.jdbc.url=jdbc:postgresql://localhost/sonar
+sonar.path.data=%{sonar_home_data}/data
+sonar.path.temp=%{sonar_home_data}/temp
+sonar.web.host=0.0.0.0
+sonar.web.context=/sonar
+EOF
+
+mkdir -p $RPM_BUILD_ROOT/etc
+ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/sonar
+rm -rf $RPM_BUILD_ROOT/%{sonar_home}/logs
+ln -sf %{sonar_home_logs} $RPM_BUILD_ROOT/%{sonar_home}/logs
 
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/extensions/downloads
 # ------------------------------------------------------------------------------
@@ -86,14 +109,18 @@ fi
 %postun
 %files
 %defattr(-,sonar,sonar,-)
-%dir %{sonar_home}/logs
-%dir %{sonar_home}/data
-%dir %{sonar_home}/temp
+%dir %{sonar_home_logs}
+%dir %{sonar_home_data}/data
+%dir %{sonar_home_data}/temp
+/etc/sonar
+%{sonar_home}/data
+%{sonar_home}/temp
+%{sonar_home}/logs
 %{sonar_home}/extensions/*
 %dir %{sonar_home}/extensions/downloads
 %defattr(-,root,root,-)
 %{sonar_home}/bin/*
-%config(noreplace) %{sonar_home}/conf/*
+%config %{sonar_home}/conf/*
 %{sonar_home}/elasticsearch/*
 %{sonar_home}/lib/*
 %{sonar_home}/web/*

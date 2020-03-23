@@ -7,7 +7,7 @@ Type=forking
 Restart=always
 ExecStart=/opt/ss/develenv/platform/sonar/bin/linux-x86-64/sonar.sh start
 ExecStop=/opt/ss/develenv/platform/sonar/bin/linux-x86-64/sonar.sh stop
-User=develenv
+User=sonar
 
 [Install]
 WantedBy=multi-user.target

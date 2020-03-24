@@ -35,18 +35,19 @@ rm -rf $RPM_BUILD_ROOT
 # INSTALL
 # ------------------------------------------------------------------------------
 %install
+SONAR_VERSION=%{sonar_version}
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}
 
 cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 cd $RPM_BUILD_ROOT
 mkdir build
 cd build
-curl -L -k -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-%{sonar_version}-linux.zip
-unzip sonar-scanner-cli-%{sonar_version}-linux.zip
-cd sonar-scanner-%{sonar_version}-linux
+curl -L -k -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_VERSION}-linux.zip
+unzip sonar-scanner-cli-${SONAR_VERSION}-linux.zip
+cd sonar-scanner-${SONAR_VERSION}-linux
 rm -rf jre
 cd ../../
-mv build/sonar-scanner-%{sonar_version}-linux/* $RPM_BUILD_ROOT/%{sonar_home}/
+mv build/sonar-scanner-${SONAR_VERSION}-linux/* $RPM_BUILD_ROOT/%{sonar_home}/
 rm -rf build 
 mkdir -p $RPM_BUILD_ROOT/usr/bin
 ln -sf %{sonar_home}/bin/sonar-scanner $RPM_BUILD_ROOT/usr/bin/sonar-scanner
@@ -56,5 +57,5 @@ ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/sonar-scanner
 
 %files
 %defattr(-,root,root,-)
-%dir %{sonar_home}/*
+%{sonar_home}/*
 %doc ../../../../README.md

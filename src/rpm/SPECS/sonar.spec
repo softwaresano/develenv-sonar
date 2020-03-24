@@ -46,11 +46,19 @@ curl -L -k -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-
 unzip sonarqube-%{sonar_version}.zip
 cd sonarqube-%{sonar_version}
 cd extensions/plugins
-rm -f sonar-csharp-plugin*.jar sonar-vbnet-plugin*.jar sonar-kotlin-plugin*.jar sonar-flex-plugin*.jar
+rm -f sonar-csharp-plugin*.jar \
+     sonar-vbnet-plugin*.jar \
+     sonar-kotlin-plugin*.jar \
+     sonar-flex-plugin*.jar \
+     sonar-python-plugin*.jar \
+     sonar-java-plugin*.jar \
+     sonar-scm-git-plugin*.jar
 curl -f -L -k -O https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
 curl -f -L -k -O https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar
 curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.7.0.5975.jar
 curl -f -L -k -O https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.3.0/sonar-shellcheck-plugin-2.3.0.jar
+curl -f -L -k https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.2.0.21135.jar
+curl -f -L -k https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.0.11.jar
 cd ../../
 rm -rf bin/windows-x86-64
 cd ../../

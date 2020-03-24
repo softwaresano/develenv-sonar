@@ -45,6 +45,13 @@ cd build
 curl -L -k -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
 unzip sonarqube-%{sonar_version}.zip
 cd sonarqube-%{sonar_version}
+cd extensions/plugins
+rm -f sonar-csharp-plugin*.jar sonar-vbnet-plugin*.jar sonar-kotlin-plugin*.jar sonar-flex-plugin*.jar
+
+curl -f -L -k -O https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar
+curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.7.0.5975.jar
+curl -f -L -k -O https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.3.0/sonar-shellcheck-plugin-2.3.0.jar
+cd ../../
 rm -rf bin/windows-x86-64
 cd ../../
 mv build/sonarqube-%{sonar_version}/* $RPM_BUILD_ROOT/%{sonar_home}/

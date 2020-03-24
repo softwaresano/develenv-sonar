@@ -54,10 +54,13 @@ mkdir -p $RPM_BUILD_ROOT/usr/bin
 ln -sf %{sonar_home}/bin/sonar-scanner $RPM_BUILD_ROOT/usr/bin/sonar-scanner
 ln -sf %{sonar_home}/bin/sonar-scanner-debug $RPM_BUILD_ROOT/usr/bin/sonar-scanner-debug
 mkdir -p $RPM_BUILD_ROOT/etc
-ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/sonar-scanner
+ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/%{package_name}
 
 %files
 %defattr(-,root,root,-)
 %{sonar_home}/*
 /usr/bin/*
+/etc/%{package_name}
+%config %{sonar_home}/conf/*
+
 %doc ../../../../README.md

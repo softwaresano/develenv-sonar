@@ -57,8 +57,8 @@ curl -f -L -k -O https://github.com/Inform-Software/sonar-groovy/releases/downlo
 curl -f -L -k -O https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar
 curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.7.0.5975.jar
 curl -f -L -k -O https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.3.0/sonar-shellcheck-plugin-2.3.0.jar
-curl -f -L -k https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.2.0.21135.jar
-curl -f -L -k https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.0.11.jar
+curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.2.0.21135.jar
+curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.0.11.jar
 cd ../../
 rm -rf bin/windows-x86-64
 cd ../../

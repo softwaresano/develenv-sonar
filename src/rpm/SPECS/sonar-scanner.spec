@@ -17,7 +17,7 @@ Vendor:      softwaresano
 
 %define package_name sonar-scanner
 %define target_dir /
-%define sonar_home /opt/ss/develenv/platform/sonar
+%define sonar_home /opt/ss/develenv/platform/%{package_name}
 %define sonar_home_logs /var/log/sonar
 %define sonar_home_data /var/lib/sonar
 
@@ -46,6 +46,7 @@ curl -L -k -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/so
 unzip sonar-scanner-cli-${SONAR_VERSION}-linux.zip
 cd sonar-scanner-${SONAR_VERSION}-linux
 rm -rf jre
+sed -i 's:use_embedded_jre=true:use_embedded_jre=false:g' bin/sonar-scanner
 cd ../../
 mv build/sonar-scanner-${SONAR_VERSION}-linux/* $RPM_BUILD_ROOT/%{sonar_home}/
 rm -rf build 
@@ -58,4 +59,5 @@ ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/sonar-scanner
 %files
 %defattr(-,root,root,-)
 %{sonar_home}/*
+/usr/bin/*
 %doc ../../../../README.md

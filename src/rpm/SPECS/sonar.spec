@@ -10,7 +10,7 @@ Packager:    softwaresano.com
 URL:         https://www.sonarqube.org/
 BuildArch:   x86_64
 BuildRoot:   %{_topdir}/BUILDROOT
-Requires:    mod_proxy_html httpd java-11-openjdk postgresql-server >= 10.6
+Requires:    httpd java-11-openjdk postgresql-server >= 10.6
 AutoReqProv: no
 
 Vendor:      softwaresano
@@ -50,7 +50,7 @@ cd ../../
 mv build/sonarqube-%{sonar_version}/* $RPM_BUILD_ROOT/%{sonar_home}/
 rm -rf build 
 sed -i s:^PIDDIR.*:PIDDIR=/tmp:g $RPM_BUILD_ROOT/%{sonar_home}/bin/linux-x86-64/sonar.sh
-%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_logs}
+%{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_logs}/http
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_data}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/data
 mv ${RPM_BUILD_ROOT}/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/
 mv ${RPM_BUILD_ROOT}/%{sonar_home}/data $RPM_BUILD_ROOT/%{sonar_home_data}/
@@ -65,8 +65,6 @@ sonar.jdbc.password=sonar
 sonar.jdbc.url=jdbc:postgresql://localhost/sonar
 sonar.path.data=%{sonar_home_data}/data
 sonar.path.temp=%{sonar_home_data}/temp
-sonar.web.host=0.0.0.0
-sonar.web.context=/sonar
 EOF
 
 mkdir -p $RPM_BUILD_ROOT/etc
@@ -110,6 +108,7 @@ fi
 %files
 %defattr(-,sonar,sonar,-)
 %dir %{sonar_home_logs}
+%dir %{sonar_home_logs}/http
 %dir %{sonar_home_data}/data
 %dir %{sonar_home_data}/temp
 /etc/sonar

@@ -55,7 +55,7 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-scm-git-plugin*.jar \
      sonar-cxx-plugin-*.jar \
      sonar-c-plugin-*.jar \
-     sonar-rci-plugin-*.jar |
+     sonar-rci-plugin-*.jar \
      qualinsight-plugins-sonarqube-badges-*.jar
 
 curl -f -L -k -O https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar

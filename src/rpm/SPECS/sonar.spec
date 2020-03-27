@@ -55,7 +55,8 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-scm-git-plugin*.jar \
      sonar-cxx-plugin-*.jar \
      sonar-c-plugin-*.jar \
-     sonar-rci-plugin-*.jar
+     sonar-rci-plugin-*.jar |
+     qualinsight-plugins-sonarqube-badges-*.jar
 
 curl -f -L -k -O https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
 curl -f -L -k -O https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar
@@ -66,6 +67,7 @@ curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-scm-git-plu
 curl -f -L -k -O https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sonar-cxx-plugin-1.3.2.1853.jar
 curl -f -L -k -O https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sonar-c-plugin-1.3.2.1853.jar
 curl -f -L -k -O https://github.com/willemsrb/sonar-rci-plugin/releases/download/sonar-rci-plugin-1.0.2/sonar-rci-plugin-1.0.2.jar
+curl -f -L -k -O https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar

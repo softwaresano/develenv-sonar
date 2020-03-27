@@ -35,14 +35,17 @@ rm -rf $RPM_BUILD_ROOT
 # INSTALL
 # ------------------------------------------------------------------------------
 %install
-%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} $RPM_BUILD_ROOT/%{sonar_home}
+function download(){
+  curl -f -L -k -O "$1" || exit 1
+}
 
+%{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} $RPM_BUILD_ROOT/%{sonar_home}
 cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 rm -rf $RPM_BUILD_ROOT/%{target_dir}/extras
 cd $RPM_BUILD_ROOT/%{target_dir}
 mkdir build
 cd build
-curl -L -k -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
+download https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-%{sonar_version}.zip
 unzip sonarqube-%{sonar_version}.zip
 cd sonarqube-%{sonar_version}
 cd extensions/plugins
@@ -55,21 +58,28 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-scm-git-plugin*.jar \
      sonar-cxx-plugin-*.jar \
      sonar-c-plugin-*.jar \
-     sonar-rci-plugin-*.jar
-
-curl -f -L -k -O https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar
-curl -f -L -k -O https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar
-curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.7.0.5975.jar
-curl -f -L -k -O https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.3.0/sonar-shellcheck-plugin-2.3.0.jar
-curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.2.0.21135.jar
-curl -f -L -k -O https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.0.11.jar
-curl -f -L -k -O https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sonar-cxx-plugin-1.3.2.1853.jar
-curl -f -L -k -O https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sonar-c-plugin-1.3.2.1853.jar
-curl -f -L -k -O https://github.com/willemsrb/sonar-rci-plugin/releases/download/sonar-rci-plugin-1.0.2/sonar-rci-plugin-1.0.2.jar
+     sonar-rci-plugin-*.jar \
+     qualinsight-plugins-sonarqube-badges-*.jar
+for i in \
+  https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar \
+  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar \
+  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar \
+  https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar \
+  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar \
+  https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.7.0.5975.jar \
+  https://github.com/sbaudoin/sonar-shellcheck/releases/download/v2.3.0/sonar-shellcheck-plugin-2.3.0.jar \
+  https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.2.0.21135.jar \
+  https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.0.11.jar \
+  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sonar-cxx-plugin-1.3.2.1853.jar \
+  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sonar-c-plugin-1.3.2.1853.jar \
+  https://github.com/willemsrb/sonar-rci-plugin/releases/download/sonar-rci-plugin-1.0.2/sonar-rci-plugin-1.0.2.jar \
+  https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar; do
+  download "$i" 
+done
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar
-curl -f -L -k -O https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sslr-cxx-toolkit-1.3.2.1853.jar
+download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sslr-cxx-toolkit-1.3.2.1853.jar
 cd ../
 rm -rf bin/windows-x86-64
 cd ../../

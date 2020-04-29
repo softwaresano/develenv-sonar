@@ -62,9 +62,11 @@ rm -f sonar-csharp-plugin*.jar \
      qualinsight-plugins-sonarqube-badges-*.jar \
      sonar-javascript-plugin-*.jar \
      sonar-typescript-plugin-*.jar \
-     sonar-scm-git-plugin-*.jar
+     sonar-scm-git-plugin-*.jar \
+     sonar-perl-plugin-*.jar
 
 for i in \
+  https://github.com/sonar-perl/sonar-perl/releases/download/0.4.6/sonar-perl-plugin-0.4.6-all.jar \
   https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.1.2008.jar \
   https://github.com/SonarSource/SonarJS/releases/download/6.2.1.12157/sonar-javascript-plugin-6.2.1.12157.jar \
   https://github.com/SonarSource/SonarTS/releases/download/2.1.0.4359/sonar-typescript-plugin-2.1.0.4362.jar \

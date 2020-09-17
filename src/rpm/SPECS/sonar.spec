@@ -64,7 +64,7 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-typescript-plugin-*.jar \
      sonar-scm-git-plugin-*.jar \
      sonar-perl-plugin-*.jar
-
+# http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar
 for i in \
   https://github.com/sonar-perl/sonar-perl/releases/download/0.4.6/sonar-perl-plugin-0.4.6-all.jar \
   https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.1.2008.jar \
@@ -76,7 +76,7 @@ for i in \
   https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar \
   https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.1/sonar-yaml-plugin-1.5.1.jar \
   https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-2.8.0.6204.jar \
-  https://github.com/emerald-squad/sonar-shellcheck-plugin/releases/download/v1.1.3/sonar-shellcheck-plugin-1.1.3.jar \
+  http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar \
   https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-6.3.0.21585.jar \
   https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.11.0.11.jar \
   https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sonar-cxx-plugin-1.3.2.1853.jar \

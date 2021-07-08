@@ -69,7 +69,7 @@ for i in \
   https://github.com/Inform-Software/sonar-groovy/releases/download/1.7/sonar-groovy-plugin-1.7.jar \
   https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.2/sonar-yaml-plugin-1.5.2.jar \
   https://github.com/Inform-Software/sonar-groovy/releases/download/1.6/sonar-groovy-plugin-1.6.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-3.5.0.8244.jar \
+  https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-3.5.0.8244.jar \
   http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar \
   https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-7.1.0.26670.jar \
   https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.04/sonar-cxx-plugin-2.0.4.2806.jar \

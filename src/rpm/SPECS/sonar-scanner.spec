@@ -1,4 +1,4 @@
-%define sonar_version 4.3.0.2102
+%define sonar_version 4.6.2.2472
 Name:        sonar-scanner
 Version:     %{versionModule}
 Release:     %{sonar_version}.r%{releaseModule}

@@ -64,20 +64,10 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-perl-plugin-*.jar
 # http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar
 for i in \
-  https://github.com/sonar-perl/sonar-perl/releases/download/0.5.3/sonar-perl-plugin-0.5.3-all.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-scm-git-plugin/sonar-scm-git-plugin-1.12.1.2064.jar \
-  https://github.com/Inform-Software/sonar-groovy/releases/download/1.7/sonar-groovy-plugin-1.7.jar \
   https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.2/sonar-yaml-plugin-1.5.2.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-python-plugin/sonar-python-plugin-3.5.0.8244.jar \
   http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-java-plugin/sonar-java-plugin-7.1.0.26670.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-html-plugin/sonar-html-plugin-3.4.0.2754.jar \
-  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.04/sonar-cxx-plugin-2.0.4.2806.jar \
   https://github.com/willemsrb/sonar-rci-plugin/releases/download/sonar-rci-plugin-1.0.2/sonar-rci-plugin-1.0.2.jar \
   https://github.com/cnescatlab/sonar-hadolint-plugin/releases/download/1.0.0/sonar-hadolint-plugin-1.0.0.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-php-plugin/sonar-php-plugin-3.9.0.6331.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-ruby-plugin/sonar-ruby-plugin-1.8.3.2219.jar \
-  https://binaries.sonarsource.com/Distribution/sonar-xml-plugin/sonar-xml-plugin-2.2.0.2973.jar \
   https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.1.0.4359.jar \
   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar; do
   download "$i" 
@@ -85,7 +75,7 @@ done
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar
-download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sslr-cxx-toolkit-1.3.2.1853.jar
+#download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sslr-cxx-toolkit-1.3.2.1853.jar
 cd ../
 rm -rf bin/windows-x86-64
 cd ../../

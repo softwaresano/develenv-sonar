@@ -1,4 +1,4 @@
-%define sonar_version 9.4.0.54424
+%define sonar_version 9.9.0.65466
 Name:        sonar
 Version:     %{versionModule}
 Release:     %{sonar_version}.r%{releaseModule}
@@ -10,7 +10,7 @@ Packager:    softwaresano.com
 URL:         https://www.sonarqube.org/
 BuildArch:   x86_64
 BuildRoot:   %{_topdir}/BUILDROOT
-Requires:    httpd java-11-openjdk postgresql-server >= 10.6
+Requires:    httpd java-17-openjdk postgresql-server >= 10.6
 AutoReqProv: no
 
 Vendor:      softwaresano

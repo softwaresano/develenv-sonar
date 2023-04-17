@@ -64,10 +64,12 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-perl-plugin-*.jar
 # http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar
 for i in \
-  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.5.2/sonar-yaml-plugin-1.5.2.jar \
+  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.0/sonar-cxx-plugin-2.1.0.428.jar \
+  https://github.com/Inform-Software/sonar-groovy/releases/download/1.8/sonar-groovy-plugin-1.8.jar \
+  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.7.0/sonar-yaml-plugin-1.7.0.jar \
   http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar \
   https://github.com/willemsrb/sonar-rci-plugin/releases/download/sonar-rci-plugin-1.0.2/sonar-rci-plugin-1.0.2.jar \
-  https://github.com/cnescatlab/sonar-hadolint-plugin/releases/download/1.0.0/sonar-hadolint-plugin-1.0.0.jar \
+  https://github.com/cnescatlab/sonar-hadolint-plugin/releases/download/1.1.0/sonar-hadolint-plugin-1.1.0.jar \
   https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.1.0.4359.jar \
   https://github.com/QualInsight/qualinsight-plugins-sonarqube-badges/releases/download/qualinsight-plugins-sonarqube-badges-3.0.1/qualinsight-sonarqube-badges-3.0.1.jar; do
   download "$i" 
@@ -75,7 +77,7 @@ done
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar
-#download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.2/sslr-cxx-toolkit-1.3.2.1853.jar
+download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.0/cxx-sslr-toolkit-2.1.0.428.jar
 cd ../
 rm -rf bin/windows-x86-64
 cd ../../
@@ -92,13 +94,15 @@ ln -sf %{sonar_home_data}/data $RPM_BUILD_ROOT/%{sonar_home}
 cat <<EOF >>  $RPM_BUILD_ROOT/%{sonar_home}/conf/sonar.properties
 # Default configuration for sonar with develenv
 sonar.path.logs=%{sonar_home_logs}
+sonar.forceAuthentication=false
+sonar.projectCreation.mainBranchName=develop
 sonar.jdbc.username=sonar
 sonar.jdbc.password=sonar
 sonar.jdbc.url=jdbc:postgresql://localhost/sonar
 sonar.path.data=%{sonar_home_data}/data
 sonar.path.temp=%{sonar_home_data}/temp
 EOF
-
+sed -i 's#PIDFILE=.*#PIDFILE="/var/lib/sonar/temp/$APP_NAME.pid#'  "${RPM_BUILD_ROOT}/%{sonar_home}/bin/linux-x86-64/sonar.sh"
 mkdir -p $RPM_BUILD_ROOT/etc
 ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/sonar
 rm -rf $RPM_BUILD_ROOT/%{sonar_home}/logs

@@ -95,6 +95,7 @@ cat <<EOF >>  $RPM_BUILD_ROOT/%{sonar_home}/conf/sonar.properties
 # Default configuration for sonar with develenv
 sonar.path.logs=%{sonar_home_logs}
 sonar.forceAuthentication=false
+sonar.cxx.file.suffixes=.cxx,.cpp,.cc,.c,.hxx,.hpp,.hh,.h
 sonar.projectCreation.mainBranchName=develop
 sonar.jdbc.username=sonar
 sonar.jdbc.password=sonar

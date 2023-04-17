@@ -62,7 +62,6 @@ rm -f sonar-csharp-plugin*.jar \
      qualinsight-plugins-sonarqube-badges-*.jar \
      sonar-scm-git-plugin-*.jar \
      sonar-perl-plugin-*.jar
-# http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar
 for i in \
   https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.0/sonar-cxx-plugin-2.1.0.428.jar \
   https://github.com/Inform-Software/sonar-groovy/releases/download/1.8/sonar-groovy-plugin-1.8.jar \
@@ -103,7 +102,7 @@ sonar.jdbc.url=jdbc:postgresql://localhost/sonar
 sonar.path.data=%{sonar_home_data}/data
 sonar.path.temp=%{sonar_home_data}/temp
 EOF
-sed -i 's#PIDFILE=.*#PIDFILE="/var/lib/sonar/temp/$APP_NAME.pid#'  "${RPM_BUILD_ROOT}/%{sonar_home}/bin/linux-x86-64/sonar.sh"
+sed -i 's#PIDFILE=.*#PIDFILE="/var/lib/sonar/temp/$APP_NAME.pid"#'  "${RPM_BUILD_ROOT}/%{sonar_home}/bin/linux-x86-64/sonar.sh"
 mkdir -p $RPM_BUILD_ROOT/etc
 ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/sonar
 rm -rf $RPM_BUILD_ROOT/%{sonar_home}/logs

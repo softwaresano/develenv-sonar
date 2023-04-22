@@ -40,7 +40,6 @@ function download(){
 }
 
 %{__mkdir_p} $RPM_BUILD_ROOT/%{target_dir} $RPM_BUILD_ROOT/%{sonar_home}
-cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 rm -rf $RPM_BUILD_ROOT/%{target_dir}/extras
 cd $RPM_BUILD_ROOT/%{target_dir}
 mkdir build
@@ -111,6 +110,7 @@ rm -rf $RPM_BUILD_ROOT/%{sonar_home}/logs
 ln -sf %{sonar_home_logs} $RPM_BUILD_ROOT/%{sonar_home}/logs
 
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home}/extensions/downloads
+rsync -arv %{_sourcedir}/* $RPM_BUILD_ROOT/%{target_dir}
 # ------------------------------------------------------------------------------
 # PRE-INSTALL
 # ------------------------------------------------------------------------------

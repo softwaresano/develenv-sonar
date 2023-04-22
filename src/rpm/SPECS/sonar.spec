@@ -89,8 +89,8 @@ mv ${RPM_BUILD_ROOT}/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/
 mv ${RPM_BUILD_ROOT}/%{sonar_home}/data $RPM_BUILD_ROOT/%{sonar_home_data}/
 ln -sf %{sonar_home_data}/temp $RPM_BUILD_ROOT/%{sonar_home}
 ln -sf %{sonar_home_data}/data $RPM_BUILD_ROOT/%{sonar_home}
-
-cat <<EOF >>  $RPM_BUILD_ROOT/%{sonar_home}/conf/sonar.properties
+echo "admin" > $RPM_BUILD_ROOT/%{sonar_home}/conf/.admin_password
+cat <<EOF >> $RPM_BUILD_ROOT/%{sonar_home}/conf/sonar.properties
 # Default configuration for sonar with develenv
 sonar.path.logs=%{sonar_home_logs}
 sonar.forceAuthentication=false
@@ -101,6 +101,8 @@ sonar.jdbc.password=sonar
 sonar.jdbc.url=jdbc:postgresql://localhost/sonar
 sonar.path.data=%{sonar_home_data}/data
 sonar.path.temp=%{sonar_home_data}/temp
+EOF
+cat <<EOF >> $RPM_BUILD_ROOT/%{sonar_home}/bin/add_sonar_user.sh
 EOF
 sed -i 's#PIDFILE=.*#PIDFILE="/var/lib/sonar/temp/$APP_NAME.pid"#'  "${RPM_BUILD_ROOT}/%{sonar_home}/bin/linux-x86-64/sonar.sh"
 mkdir -p $RPM_BUILD_ROOT/etc
@@ -156,6 +158,7 @@ fi
 %defattr(-,root,root,-)
 %{sonar_home}/bin/*
 %config %{sonar_home}/conf/*
+%attr(0400,root,root) %{sonar_home}/conf/.admin_password
 %{sonar_home}/elasticsearch/*
 %{sonar_home}/lib/*
 %{sonar_home}/web/*

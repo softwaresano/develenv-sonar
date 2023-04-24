@@ -88,7 +88,7 @@ mv ${RPM_BUILD_ROOT}/%{sonar_home}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/
 mv ${RPM_BUILD_ROOT}/%{sonar_home}/data $RPM_BUILD_ROOT/%{sonar_home_data}/
 ln -sf %{sonar_home_data}/temp $RPM_BUILD_ROOT/%{sonar_home}
 ln -sf %{sonar_home_data}/data $RPM_BUILD_ROOT/%{sonar_home}
-echo "admin" > $RPM_BUILD_ROOT/%{sonar_home}/conf/.admin_password
+echo "machine localhost login admin password admin" > $RPM_BUILD_ROOT/%{sonar_home}/conf/.admin_password
 cat <<EOF >> $RPM_BUILD_ROOT/%{sonar_home}/conf/sonar.properties
 # Default configuration for sonar with develenv
 sonar.path.logs=%{sonar_home_logs}

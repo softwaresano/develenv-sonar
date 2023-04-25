@@ -5,8 +5,8 @@ require 'net/http'
 require 'uri'
 require 'json'
 
+# Clone internal sonar profiles and load all rules
 class ProfilesLoader
-  # Clone internal sonar profiles and load all rules
   def initialize
     file_data = File.read('/opt/ss/develenv/platform/sonar/conf/.admin_password').split
     @password = file_data[-1]
@@ -36,6 +36,8 @@ class ProfilesLoader
     quality_profile = 'CDN'
     new_profile = response_json("http://localhost/api/qualityprofiles/copy?fromKey=#{source['key']}&toName=#{quality_profile}",
                                 'Post')
+    response_json("http://localhost/api/qualityprofiles/activate_rules?targetKey=#{new_profile['key']}&statuses=READY",
+                  'Post')
     response_http(
       "http://localhost/api/qualityprofiles/set_default?language=#{new_profile['language']}&qualityProfile=#{quality_profile}",
       'Post'

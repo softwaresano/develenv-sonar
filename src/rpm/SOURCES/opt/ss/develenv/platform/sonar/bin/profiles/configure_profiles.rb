@@ -33,7 +33,7 @@ class ProfilesLoader
 
   def clone_profile(source)
     puts ">>> Cloning #{source}"
-    quality_profile = 'CDN_AAAB'
+    quality_profile = 'CDN'
     new_profile = response_json("http://localhost/api/qualityprofiles/copy?fromKey=#{source['key']}&toName=#{quality_profile}",
                                 'Post')
     response_http(

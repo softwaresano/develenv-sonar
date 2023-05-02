@@ -1,4 +1,4 @@
-%define sonar_version 9.9.1.69595
+%define sonar_version %(grep -A1 "<artifactId>sonar-core</artifactId>" pom.xml|tail -1|grep -Po --color=no "(?<=<version>).*(?=<)")
 Name:        sonar
 Version:     %{versionModule}
 Release:     %{sonar_version}.r%{releaseModule}

@@ -1,8 +1,11 @@
 ruby ruby:S1451
 cxx cxx:UndocumentedApi
+cxx cxx:FileHeader
 js javascript:S1451
 web Web:HeaderCheck
 web Web:JspScriptletCheck
 yaml yaml:QuotedStringsCheck
 yaml yaml:KeyOrderingCheck
+ts typescript:S1451
+
 

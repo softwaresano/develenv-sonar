@@ -98,6 +98,7 @@ sonar.jdbc.password=sonar
 sonar.jdbc.url=jdbc:postgresql://localhost/sonar
 sonar.path.data=%{sonar_home_data}/data
 sonar.path.temp=%{sonar_home_data}/temp
+sonar.lf.logoUrl=http://cdn-docs.cdn.hi.inet/cdn/repositories/current/docs/components/cdn-build/images/tef-logo.png
 EOF
 cat <<EOF >> $RPM_BUILD_ROOT/%{sonar_home}/bin/add_sonar_user.sh
 EOF

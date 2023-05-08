@@ -8,3 +8,5 @@ yaml yaml:QuotedStringsCheck
 yaml yaml:KeyOrderingCheck
 ts typescript:S1451
 xml xml:S103
+grvy grvy:org.codenarc.rule.dry.DuplicateStringLiteralRule
+grvy grvy:org.codenarc.rule.dry.DuplicateNumberLiteralRule

@@ -11,7 +11,7 @@
       <dependency>
         <groupId>org.sonarsource.sonarqube</groupId>
         <artifactId>sonar-core</artifactId>
-        <version>9.9.1.69595</version>
+        <version>10.0.0.68432</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

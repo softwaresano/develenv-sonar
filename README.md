@@ -1,5 +1,5 @@
 develenv-sonar
 ================
 
-sonar for develenv in rh7
+sonar for develenv (RH8)
 

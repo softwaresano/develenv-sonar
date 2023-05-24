@@ -2,7 +2,7 @@ ruby ruby:S1451
 cxx cxx:FunctionName
 cxx cxx:UndocumentedApi
 cxx cxx:FileHeader
-cxx:ClassName
+cxx cxx:ClassName
 js javascript:S1451
 web Web:HeaderCheck
 web Web:JspScriptletCheck

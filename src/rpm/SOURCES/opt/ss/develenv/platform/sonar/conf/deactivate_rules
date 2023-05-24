@@ -3,7 +3,6 @@ cxx cxx:FunctionName
 cxx cxx:UndocumentedApi
 cxx cxx:FileHeader
 cxx:ClassName
-./src/rpm/SOURCES/opt/ss/develenv/platform/sonar/conf/deactivate_rules'
 js javascript:S1451
 web Web:HeaderCheck
 web Web:JspScriptletCheck

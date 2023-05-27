@@ -62,7 +62,7 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-scm-git-plugin-*.jar \
      sonar-perl-plugin-*.jar
 for i in \
-  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.0/sonar-cxx-plugin-2.1.0.428.jar \
+  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.1/sonar-cxx-plugin-2.1.1.488.jar \
   https://github.com/Inform-Software/sonar-groovy/releases/download/1.8/sonar-groovy-plugin-1.8.jar \
   https://github.com/sbaudoin/sonar-yaml/releases/download/v1.7.0/sonar-yaml-plugin-1.7.0.jar \
   http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar \
@@ -74,7 +74,7 @@ done
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar
-download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.0/cxx-sslr-toolkit-2.1.0.428.jar
+download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.1/cxx-sslr-toolkit-2.1.1.488.jar
 cd ../
 rm -rf bin/windows-x86-64
 cd ../../

@@ -11,3 +11,4 @@ ts typescript:S1451
 xml xml:S103
 grvy grvy:org.codenarc.rule.dry.DuplicateStringLiteralRule
 grvy grvy:org.codenarc.rule.dry.DuplicateNumberLiteralRule
+py python:S1722

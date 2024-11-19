@@ -79,7 +79,7 @@ cd ../
 rm -rf bin/windows-x86-64
 cd ../../
 mv build/sonarqube-%{sonar_version}/* $RPM_BUILD_ROOT/%{sonar_home}/
-rm -rf build 
+rm -rf build
 sed -i s:^PIDDIR.*:PIDDIR=/tmp:g $RPM_BUILD_ROOT/%{sonar_home}/bin/linux-x86-64/sonar.sh
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_logs}/http
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_data}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/data
@@ -149,6 +149,7 @@ fi
 %dir %{sonar_home_data}/data
 %dir %{sonar_home_data}/temp
 /etc/sonar
+%{sonar_home}/jres/*-jre_x64_linux_hotspot_*
 %{sonar_home}/data
 %{sonar_home}/temp
 %{sonar_home}/logs

@@ -10,7 +10,7 @@ Packager:    softwaresano.com
 URL:         https://www.sonarqube.org/
 BuildArch:   x86_64
 BuildRoot:   %{_topdir}/BUILDROOT
-Requires:    httpd java-17-openjdk postgresql-server >= 10.6
+Requires:    polkit initscripts httpd java-17-openjdk postgresql-server >= 13
 AutoReqProv: no
 
 Vendor:      softwaresano
@@ -62,9 +62,9 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-scm-git-plugin-*.jar \
      sonar-perl-plugin-*.jar
 for i in \
-  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.1/sonar-cxx-plugin-2.1.1.488.jar \
+  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.2.0-beta.8/sonar-cxx-plugin-2.2.0.1004.jar \
   https://github.com/Inform-Software/sonar-groovy/releases/download/1.8/sonar-groovy-plugin-1.8.jar \
-  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.7.0/sonar-yaml-plugin-1.7.0.jar \
+  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.9.1/sonar-yaml-plugin-1.9.1.jar \
   http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar \
   https://github.com/willemsrb/sonar-rci-plugin/releases/download/sonar-rci-plugin-1.0.2/sonar-rci-plugin-1.0.2.jar \
   https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.1.0.4359.jar \
@@ -74,7 +74,7 @@ done
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar
-download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.1/cxx-sslr-toolkit-2.1.1.488.jar
+download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.2.0-beta.8/cxx-sslr-toolkit-2.2.0.1004.jar
 cd ../
 rm -rf bin/windows-x86-64
 cd ../../

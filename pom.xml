@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.softaresano</groupId>
   <artifactId>develenv-sonar</artifactId>
-  <version>37-SNAPSHOT</version>
+  <version>38-SNAPSHOT</version>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.sonarsource.sonarqube</groupId>
         <artifactId>sonar-core</artifactId>
-        <version>10.7.0.96327</version>
+        <version>25.1.0.102122</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

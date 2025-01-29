@@ -10,7 +10,7 @@ Packager:    softwaresano.com
 URL:         https://www.sonarqube.org/
 BuildArch:   x86_64
 BuildRoot:   %{_topdir}/BUILDROOT
-Requires:    httpd java-17-openjdk postgresql-server >= 10.6
+Requires:    polkit initscripts httpd java-17-openjdk postgresql-server
 AutoReqProv: no
 
 Vendor:      softwaresano
@@ -62,9 +62,9 @@ rm -f sonar-csharp-plugin*.jar \
      sonar-scm-git-plugin-*.jar \
      sonar-perl-plugin-*.jar
 for i in \
-  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.1/sonar-cxx-plugin-2.1.1.488.jar \
+  https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.2.0-beta.9/sonar-cxx-plugin-2.2.0.1050.jar \
   https://github.com/Inform-Software/sonar-groovy/releases/download/1.8/sonar-groovy-plugin-1.8.jar \
-  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.7.0/sonar-yaml-plugin-1.7.0.jar \
+  https://github.com/sbaudoin/sonar-yaml/releases/download/v1.9.1/sonar-yaml-plugin-1.9.1.jar \
   http://cdn-nfs.cdn.hi.inet/develenv/repositories/artifacts/sonar-shellcheck-plugin-1.1.3.jar \
   https://github.com/willemsrb/sonar-rci-plugin/releases/download/sonar-rci-plugin-1.0.2/sonar-rci-plugin-1.0.2.jar \
   https://binaries.sonarsource.com/Distribution/sonar-typescript-plugin/sonar-typescript-plugin-2.1.0.4359.jar \
@@ -74,12 +74,12 @@ done
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar
-download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.1.1/cxx-sslr-toolkit-2.1.1.488.jar
+download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.2.0-beta.9/cxx-sslr-toolkit-2.2.0.1050.jar
 cd ../
 rm -rf bin/windows-x86-64
 cd ../../
 mv build/sonarqube-%{sonar_version}/* $RPM_BUILD_ROOT/%{sonar_home}/
-rm -rf build 
+rm -rf build
 sed -i s:^PIDDIR.*:PIDDIR=/tmp:g $RPM_BUILD_ROOT/%{sonar_home}/bin/linux-x86-64/sonar.sh
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_logs}/http
 %{__mkdir_p} $RPM_BUILD_ROOT/%{sonar_home_data}/temp $RPM_BUILD_ROOT/%{sonar_home_data}/data
@@ -149,6 +149,7 @@ fi
 %dir %{sonar_home_data}/data
 %dir %{sonar_home_data}/temp
 /etc/sonar
+%{sonar_home}/jres/*-jre_x64_linux_hotspot_*
 %{sonar_home}/data
 %{sonar_home}/temp
 %{sonar_home}/logs

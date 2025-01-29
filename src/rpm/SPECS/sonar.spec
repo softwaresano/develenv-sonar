@@ -10,7 +10,7 @@ Packager:    softwaresano.com
 URL:         https://www.sonarqube.org/
 BuildArch:   x86_64
 BuildRoot:   %{_topdir}/BUILDROOT
-Requires:    polkit initscripts httpd java-17-openjdk postgresql-server >= 13
+Requires:    polkit initscripts httpd java-17-openjdk postgresql-server
 AutoReqProv: no
 
 Vendor:      softwaresano

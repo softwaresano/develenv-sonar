@@ -74,7 +74,7 @@ done
 cd ../../
 cd lib
 rm -f sslr-cxx-toolkit-*.jar
-download download   https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.2.0/cxx-sslr-toolkit-2.2.0.1110.jar
+download https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.2.0/cxx-sslr-toolkit-2.2.0.1110.jar
 cd ../
 rm -rf bin/windows-x86-64
 cd ../../

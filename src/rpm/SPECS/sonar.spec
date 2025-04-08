@@ -100,8 +100,6 @@ sonar.path.data=%{sonar_home_data}/data
 sonar.path.temp=%{sonar_home_data}/temp
 sonar.lf.logoUrl=http://cdn-docs.cdn.hi.inet/cdn/repositories/current/docs/components/cdn-build/images/tef-logo.png
 EOF
-cat <<EOF >> $RPM_BUILD_ROOT/%{sonar_home}/bin/add_sonar_user.sh
-EOF
 sed -i 's#PIDFILE=.*#PIDFILE="/var/lib/sonar/temp/$APP_NAME.pid"#'  "${RPM_BUILD_ROOT}/%{sonar_home}/bin/linux-x86-64/sonar.sh"
 mkdir -p $RPM_BUILD_ROOT/etc
 ln -sf %{sonar_home}/conf $RPM_BUILD_ROOT/etc/sonar

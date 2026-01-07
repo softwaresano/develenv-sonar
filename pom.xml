@@ -9,7 +9,7 @@
       <dependency>
         <groupId>org.sonarsource.sonarqube</groupId>
         <artifactId>sonar-core</artifactId>
-        <version>25.3.0.104237</version>
+        <version>26.1.0.118079</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
